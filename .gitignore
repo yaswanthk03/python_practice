@@ -1,0 +1,5 @@
+# Ignore all virtual environments, anywhere
+**/venv/
+**/.venv/
+**/env/
+**/.env/
