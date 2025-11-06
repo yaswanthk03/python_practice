@@ -22,9 +22,6 @@ Productivity Rating: 4/5
 
 import datetime
 
-now = datetime.datetime.now()
-now.strfti
-
 entry = f"📅 {datetime.datetime.now().strftime("%d-%m-%Y  %I:%M:%S %p")}\n"
 
 entry += input("Type today's Journal: ").strip() + "\n"
