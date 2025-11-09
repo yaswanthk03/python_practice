@@ -53,14 +53,21 @@ def fetch_titles(url):
     try:
         soup = BeautifulSoup(request.text, 'html.parser')
 
-        spans = soup.find_all('span', class_='titleline', limit=20)
+        # spans = soup.find_all('span', class_='titleline', limit=20)
 
+        posts = soup.select('span.titleline > a', limit=20)
+        
         title_list = []
 
-        for span in spans:
-            tag = span.find_all('a', recursive=False, limit=1)[0]
-            title = tag.get_text(strip=True)
-            link = tag.get('href', '')
+        # for span in spans:
+        #     tag = span.find_all('a', recursive=False, limit=1)[0]
+        #     title = tag.get_text(strip=True)
+        #     link = tag.get('href', '')
+        #     title_list.append({'Title': title, 'URL': link})
+
+        for post in posts:
+            title = post.get_text(strip=True)
+            link = post.get('href', '').strip()
             title_list.append({'Title': title, 'URL': link})
         
         save_to_file(title_list)
